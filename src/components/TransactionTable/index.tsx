@@ -1,11 +1,10 @@
 import { useEffect } from "react";
+import { api } from "../../services/api";
 import * as S from "./styled";
 
 export function TransactionTable() {
   useEffect(() => {
-    fetch("http://localhost:3000/api/transactions")
-      .then((r) => r.json())
-      .then((r) => console.log(r));
+    api.get("/transactions").then((r) => console.log(r?.data));
   }, []);
 
   return (
