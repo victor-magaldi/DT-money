@@ -14,9 +14,20 @@ export function NewTrasactionModal({
   onRequestClose,
 }: NewTrasactionModalProps) {
   return (
-    <Modal isOpen={isOpen} onRequestClose={onRequestClose}>
-      <h2>cadastrar transação</h2>
-      <S.Container />
+    <Modal
+      isOpen={isOpen}
+      onRequestClose={onRequestClose}
+      overlayClassName="react-modal-overlay"
+      className="react-modal-content"
+    >
+      <S.Container>
+        <h2>Cadastrar Transação</h2>
+
+        <input type="text" placeholder="titulo" />
+        <input type="number" placeholder="valor" />
+        <input type="text" placeholder="categoria" />
+        <button type="submit">Cadastrar</button>
+      </S.Container>
     </Modal>
   );
 }
