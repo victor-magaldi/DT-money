@@ -13,14 +13,17 @@ export const Container = styled.div`
            text-align: left;
            line-height: 1.5rem;
        }
-
+       tbody{
+           tr{
+            border-radius: 0.25rem;
+           }
+       }
        td{
            padding: 1rem 2rem;
            border: 0;
            background: var(--shape);
            font-weight: 400;
            color: var(--tex-body);
-           border-radius: 0.25rem;
 
            &.title{
                font-weight: 600;
