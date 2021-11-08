@@ -4,6 +4,7 @@ import outcomeImg from "../../assets/outcome.svg";
 import incomeImg from "../../assets/income.svg";
 
 import * as S from "./styled";
+import { useState } from "react";
 
 Modal.setAppElement("#root");
 
@@ -16,6 +17,8 @@ export function NewTrasactionModal({
   isOpen,
   onRequestClose,
 }: NewTrasactionModalProps) {
+  const [type, setType] = useState("deposit");
+
   return (
     <Modal
       isOpen={isOpen}
@@ -36,14 +39,28 @@ export function NewTrasactionModal({
         <input type="text" placeholder="titulo" />
         <input type="number" placeholder="valor" />
         <S.TransactionTypeContainer>
-          <button type="button">
+          <S.RadioBox
+            type="button"
+            className={type === "deposit" ? "active" : ""}
+            onClick={() => {
+              setType("deposit");
+            }}
+            isActive={type === "deposit"}
+          >
             <img src={incomeImg} alt="Entrada" />
             <span>Entrada</span>
-          </button>
-          <button type="button">
+          </S.RadioBox>
+
+          <S.RadioBox
+            type="button"
+            onClick={() => {
+              setType("withdraw");
+            }}
+            isActive={type === "withdraw"}
+          >
             <img src={outcomeImg} alt="Saída" />
             <span>Saída</span>
-          </button>
+          </S.RadioBox>
         </S.TransactionTypeContainer>
         <input type="text" placeholder="categoria" />
         <button type="submit">Cadastrar</button>
