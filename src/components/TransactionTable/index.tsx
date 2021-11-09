@@ -32,7 +32,8 @@ export function TransactionTable() {
             return (
               <tr key={transaction.id}>
                 <td className={transaction.title}>{transaction.title}</td>
-                <td className="deposit">
+                <td className={transaction.type}>
+                  {transaction.type === "withdraw" ? "-" : ""}
                   {new Intl.NumberFormat("pt-BR", {
                     style: "currency",
                     currency: "BRL",
