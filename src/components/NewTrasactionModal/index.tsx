@@ -5,6 +5,7 @@ import incomeImg from "../../assets/income.svg";
 
 import * as S from "./styled";
 import { useState } from "react";
+import { api } from "../../services/api";
 
 Modal.setAppElement("#root");
 
@@ -27,7 +28,9 @@ export function NewTrasactionModal({
   function handleCreateNewTrasaction(evt: React.FormEvent) {
     evt.preventDefault();
     console.log(dataNewTransaction);
-    console.log(evt);
+
+    const data = dataNewTransaction;
+    api.post("/transactions", data);
   }
 
   return (
