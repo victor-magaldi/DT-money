@@ -17,7 +17,18 @@ export function NewTrasactionModal({
   isOpen,
   onRequestClose,
 }: NewTrasactionModalProps) {
-  const [type, setType] = useState("deposit");
+  const [dataNewTransaction, setDataNewTransaction] = useState({
+    title: "",
+    value: 0,
+    type: "deposit",
+    category: "",
+  });
+
+  function handleCreateNewTrasaction(evt: React.FormEvent) {
+    evt.preventDefault();
+    console.log(dataNewTransaction);
+    console.log(evt);
+  }
 
   return (
     <Modal
@@ -33,19 +44,42 @@ export function NewTrasactionModal({
       >
         <img src={closeImg} alt="fechar modal" />
       </button>
-      <S.Container>
+      <S.Container onSubmit={handleCreateNewTrasaction}>
         <h2>Cadastrar Transação</h2>
 
-        <input type="text" placeholder="titulo" />
-        <input type="number" placeholder="valor" />
+        <input
+          type="text"
+          placeholder="titulo"
+          value={dataNewTransaction.title}
+          onChange={(e) => {
+            setDataNewTransaction({
+              ...dataNewTransaction,
+              title: e.target.value,
+            });
+          }}
+        />
+        <input
+          type="number"
+          placeholder="valor"
+          value={dataNewTransaction.value}
+          onChange={(e) => {
+            setDataNewTransaction({
+              ...dataNewTransaction,
+              value: Number(e.target.value),
+            });
+          }}
+        />
         <S.TransactionTypeContainer>
           <S.RadioBox
             type="button"
-            className={type === "deposit" ? "active" : ""}
+            className={dataNewTransaction.type === "deposit" ? "active" : ""}
             onClick={() => {
-              setType("deposit");
+              setDataNewTransaction({
+                ...dataNewTransaction,
+                type: "deposit",
+              });
             }}
-            isActive={type === "deposit"}
+            isActive={dataNewTransaction.type === "deposit"}
             activeColor={"green"}
           >
             <img src={incomeImg} alt="Entrada" />
@@ -55,16 +89,29 @@ export function NewTrasactionModal({
           <S.RadioBox
             type="button"
             onClick={() => {
-              setType("withdraw");
+              setDataNewTransaction({
+                ...dataNewTransaction,
+                type: "withdraw",
+              });
             }}
-            isActive={type === "withdraw"}
+            isActive={dataNewTransaction.type === "withdraw"}
             activeColor={"red"}
           >
             <img src={outcomeImg} alt="Saída" />
             <span>Saída</span>
           </S.RadioBox>
         </S.TransactionTypeContainer>
-        <input type="text" placeholder="categoria" />
+        <input
+          type="text"
+          placeholder="categoria"
+          value={dataNewTransaction.category}
+          onChange={(e) => {
+            setDataNewTransaction({
+              ...dataNewTransaction,
+              category: e.target.value,
+            });
+          }}
+        />
         <button type="submit">Cadastrar</button>
       </S.Container>
     </Modal>
