@@ -27,7 +27,6 @@ export function NewTrasactionModal({
 
   function handleCreateNewTrasaction(evt: React.FormEvent) {
     evt.preventDefault();
-    console.log(dataNewTransaction);
 
     const data = dataNewTransaction;
     api.post("/transactions", data);
