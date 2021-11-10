@@ -1,11 +1,13 @@
+import { useContext, useState } from "react";
+
+import { TransactionContext } from "../../context/TransactionContext";
 import Modal from "react-modal";
+
 import closeImg from "../../assets/close.svg";
 import outcomeImg from "../../assets/outcome.svg";
 import incomeImg from "../../assets/income.svg";
 
 import * as S from "./styled";
-import { useState } from "react";
-import { api } from "../../services/api";
 
 Modal.setAppElement("#root");
 
@@ -18,9 +20,10 @@ export function NewTrasactionModal({
   isOpen,
   onRequestClose,
 }: NewTrasactionModalProps) {
+  const { createTransaction } = useContext(TransactionContext);
   const [dataNewTransaction, setDataNewTransaction] = useState({
     title: "",
-    value: 0,
+    amount: 0,
     type: "deposit",
     category: "",
   });
@@ -29,7 +32,7 @@ export function NewTrasactionModal({
     evt.preventDefault();
 
     const data = dataNewTransaction;
-    api.post("/transactions", data);
+    createTransaction(data);
   }
 
   return (
@@ -63,11 +66,11 @@ export function NewTrasactionModal({
         <input
           type="number"
           placeholder="valor"
-          value={dataNewTransaction.value}
+          value={dataNewTransaction.amount}
           onChange={(e) => {
             setDataNewTransaction({
               ...dataNewTransaction,
-              value: Number(e.target.value),
+              amount: Number(e.target.value),
             });
           }}
         />
