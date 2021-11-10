@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Dashboard } from "./components/Dashboard/Index";
 import { Header } from "./components/Header";
 import { NewTrasactionModal } from "./components/NewTrasactionModal";
+import { TransactionProvider } from "./context/TransactionContext";
 import { GlobalStyle } from "./styles/global";
 
 export function App() {
@@ -16,7 +17,7 @@ export function App() {
   };
 
   return (
-    <>
+    <TransactionProvider>
       <Header handleOpenTrasactionModal={handleOpenTrasactionModal} />
       <GlobalStyle />
       <NewTrasactionModal
@@ -25,6 +26,6 @@ export function App() {
       />
 
       <Dashboard />
-    </>
+    </TransactionProvider>
   );
 }
