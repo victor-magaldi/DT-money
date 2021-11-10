@@ -1,9 +1,37 @@
-import * as S from "./styled";
+import { useContext } from "react";
+import { TransactionContext } from "../../context/TransactionContext";
+
 import IncomeImg from "../../assets/income.svg";
 import outcomeImg from "../../assets/outcome.svg";
 import totalImg from "../../assets/total.svg";
 
+import * as S from "./styled";
+
 export function Summary() {
+  const { transactions } = useContext(TransactionContext);
+  // const totalDeposit = transactions.reduce((acc, transaction) => {
+  //   if (transaction.type === "deposit") return (acc += transaction.amount);
+
+  //   return acc;
+  // }, 0);
+
+  const summary = transactions.reduce(
+    (acc, transaction) => {
+      if (transaction.type === "deposit") {
+        acc.deposits += transaction.amount;
+        acc.total += transaction.amount;
+      } else {
+        acc.withdraws += transaction.amount;
+        acc.total -= transaction.amount;
+      }
+      return acc;
+    },
+    {
+      deposits: 0,
+      withdraws: 0,
+      total: 0,
+    }
+  );
   return (
     <S.Container>
       <div>
@@ -11,7 +39,7 @@ export function Summary() {
           <p>Entrada</p>
           <img src={IncomeImg} alt="Entradas" />
         </header>
-        <strong>R$ 1000,00</strong>
+        <strong>R$ {String(summary.deposits)}</strong>
       </div>
 
       <div>
@@ -19,7 +47,7 @@ export function Summary() {
           <p>Saídas</p>
           <img src={outcomeImg} alt="Entradas" />
         </header>
-        <strong>R$ -500,00</strong>
+        <strong>R$ -{String(summary.withdraws)}</strong>
       </div>
 
       <div className="highlight-bg">
@@ -27,7 +55,7 @@ export function Summary() {
           <p>Total</p>
           <img src={totalImg} alt="Entradas" />
         </header>
-        <strong>R$ 1000,00</strong>
+        <strong>R$ {String(summary.total)}</strong>
       </div>
     </S.Container>
   );
