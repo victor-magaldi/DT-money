@@ -1,7 +1,7 @@
 import styled from "styled-components"
 
 export const Container = styled.header`
-    background: var(--blue);
+    background-image: linear-gradient(var(--blue), var(--background));
 `
 export const Content = styled.div`
     max-width: 1128px;
