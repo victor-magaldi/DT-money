@@ -28,11 +28,18 @@ export function NewTrasactionModal({
     category: "",
   });
 
-  function handleCreateNewTrasaction(evt: React.FormEvent) {
+  async function handleCreateNewTrasaction(evt: React.FormEvent) {
     evt.preventDefault();
 
     const data = dataNewTransaction;
-    createTransaction(data);
+    await createTransaction(data);
+    onRequestClose();
+    setDataNewTransaction({
+      title: "",
+      amount: 0,
+      type: "deposit",
+      category: "",
+    });
   }
 
   return (
@@ -55,6 +62,7 @@ export function NewTrasactionModal({
         <input
           type="text"
           placeholder="titulo"
+          required
           value={dataNewTransaction.title}
           onChange={(e) => {
             setDataNewTransaction({
@@ -66,6 +74,7 @@ export function NewTrasactionModal({
         <input
           type="number"
           placeholder="valor"
+          required
           value={dataNewTransaction.amount}
           onChange={(e) => {
             setDataNewTransaction({
@@ -109,6 +118,7 @@ export function NewTrasactionModal({
         <input
           type="text"
           placeholder="categoria"
+          required
           value={dataNewTransaction.category}
           onChange={(e) => {
             setDataNewTransaction({
