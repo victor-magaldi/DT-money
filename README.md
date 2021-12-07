@@ -25,7 +25,7 @@ Foram usados novos recursos do React como:
 
 - Não possui , mas trabalhei com uma lib bem completa para simular uma API( MirageJs)
 
-## Rodando o Projeto
+## Rodando o Projeto 💻
 
 Clonar o projeto
 
