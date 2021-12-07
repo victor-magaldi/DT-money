@@ -29,7 +29,7 @@ Clonar o projeto
   cd DT-money
 ```
 
-Instalar dependencias
+Instalar dependências
 
 ```bash
   npm install
@@ -41,7 +41,7 @@ para rodar o projeto
   npm run start
 ```
 
-para rodar o projeto
+para criar uma build de produção
 
 ```bash
   npm run build
