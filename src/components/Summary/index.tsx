@@ -50,14 +50,14 @@ export function Summary() {
       <div>
         <header>
           <p>Saídas</p>
-          <img src={outcomeImg} alt="Entradas" />
+          <img src={outcomeImg} alt="Saídas" />
         </header>
         <strong>
           -
           {new Intl.NumberFormat("pt-BR", {
             style: "currency",
             currency: "BRL",
-          }).format(summary.deposits)}
+          }).format(summary.withdraws)}
         </strong>
       </div>
 
@@ -70,7 +70,7 @@ export function Summary() {
           {new Intl.NumberFormat("pt-BR", {
             style: "currency",
             currency: "BRL",
-          }).format(summary.deposits)}
+          }).format(summary.total)}
         </strong>
       </div>
     </S.Container>
