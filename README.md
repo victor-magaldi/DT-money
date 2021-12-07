@@ -2,6 +2,7 @@
 
 O projeto foi feito para cadastrar entradas e saídas e ter mostrar um saldo.
 \
+\
 ![gif 1](https://raw.githubusercontent.com/victor-magaldi/DT-money/main/src/assets/gif-1.gif)
 \
 ![gif 2](https://raw.githubusercontent.com/victor-magaldi/DT-money/main/src/assets/gif-2.gif)
