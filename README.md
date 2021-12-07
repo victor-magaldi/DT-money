@@ -8,14 +8,21 @@ O projeto foi feito para cadastrar entradas e saídas e ter mostrar um saldo.
 
 ## Tecnologias 🔥
 
-**Client:** Typescript React,React Modal, styled components, axios
+**Client:** , ,
 \
 Foram usados novos recursos do React como:
 
+- React
+- Typescript
+- React Modal,
+- styled components
+- axios
 - hook useState, useEffect , context API
 - hooks customizado de transações
 
-**Server:** Não possui , mas trabalhei com uma lib bem completa para simular uma API( MirageJs)
+**Server:**
+
+- Não possui , mas trabalhei com uma lib bem completa para simular uma API( MirageJs)
 
 ## Rodando o Projeto
 
